@@ -3,17 +3,17 @@
 <head>
     <title>Tic Tac Toe Game</title>
     <style>
-        body { text-align: center; font-family: sans-serif; background-color: #f4f4f4; }
+        body { text-align: center; font-family: sans-serif; background-color: #f4f4f4d7; }
         .grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 100px); 
-            grid-template-rows: repeat(3, 100px); 
+            grid-template-columns: repeat(3, 125px); 
+            grid-template-rows: repeat(3, 125px); 
             gap: 5px; 
             justify-content: center; 
             margin: 20px auto; 
         }
         .cell { 
-            width: 100px; height: 100px; background: white; 
+            width: 125px; height: 125px; background: rgba(255, 255, 255, 0.842); 
             border: 1px solid #333; font-size: 40px; 
             display: flex; align-items: center; justify-content: center; 
             cursor: pointer; 
@@ -40,4 +40,15 @@
 
     <button onclick="resetGame()">Restart</button>
 
-    
+    <script>
+        var board = ["", "", "", "", "", "", "", "", ""];
+        var player = "X";
+        var active = true;
+
+        function makeMove(element, index) {
+            if (board[index] == "" && active) {
+                board[index] = player;
+                element.innerHTML = player;
+                checkWin();
+            }
+        }
